@@ -1,7 +1,7 @@
 const { prisma } = require("../services")
-async function BuscarProdutos() {
+async function BuscarUsuarios() {
     try {
-        return await prisma.produtos.findMany();
+        return await prisma.usuarios.findMany();
     } catch (error) {
         return {
             tipo: "error",
@@ -10,11 +10,11 @@ async function BuscarProdutos() {
     }
 }
 
-async function BuscarUmProduto(id) {
+async function BuscarUmUsuario(id) {
     try {
-        return await prisma.produtos.findFirst({
+        return await prisma.usuarios.findFirst({
             where: {
-                produto_id: Number(id)
+                usuario_id: Number(id)
             }
         })
     }
@@ -26,9 +26,9 @@ async function BuscarUmProduto(id) {
 
     }
 }
-async function CriarProdutos(dados) {
+async function CriarUsuarios(dados) {
     try {
-        return await prisma.produtos.create({ data: dados });
+        return await prisma.usuarios.create({ data: dados });
     }
     catch (error) {
         return {
@@ -38,10 +38,10 @@ async function CriarProdutos(dados) {
 
     }
 }
-async function EditarProdutos(id, dados) {
+async function EditarUsuarios(id, dados) {
     try {
-        return await prisma.produtos.update({
-            where: { produto_id: Number(id) },
+        return await prisma.usuarios.update({
+            where: { usuario_id: Number(id) },
             data: dados
         })
     } catch (error) {
@@ -52,12 +52,12 @@ async function EditarProdutos(id, dados) {
 
     }
 }
-    async function DeletarProduto(id) {
-        // return await executarSQL(` DELETE FROM produtos WHERE produto_id = ${id};`)
+    async function DeletarUsuario(id) {
+        // return await executarSQL(` DELETE FROM usuarios WHERE usuario_id = ${id};`)
         try {
-            return await prisma.produtos.delete({
+            return await prisma.usuarios.delete({
                 where: {
-                    produto_id: Number(id)
+                    usuario_id: Number(id)
                 }
             });
         }
@@ -72,9 +72,9 @@ async function EditarProdutos(id, dados) {
 
 
     module.exports = {
-        BuscarProdutos,
-        BuscarUmProduto,
-        CriarProdutos,
-        EditarProdutos,
-        DeletarProduto
+        BuscarUsuarios,
+        BuscarUmUsuario,
+        CriarUsuarios,
+        EditarUsuarios,
+        DeletarUsuario
     }

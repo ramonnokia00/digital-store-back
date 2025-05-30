@@ -6,13 +6,13 @@ router.get("/",  async (req, res) => {
     res.send(await BuscarProdutos() );
 })
 router.get("/:id", async(req, res) => {
-    res.send( await BuscarUmProduto());
+    res.send( await BuscarUmProduto(req.params.id));
 });
 router.post("/", async(req, res) => {
     res.send(await CriarProdutos(req.body));
 });
 router.put("/:id", async(req, res) => {
-    res.send(await EditarProdutos(req.params.id));
+    res.send(await EditarProdutos(req.params.id, req.body));
 });
 router.delete("/:id", async(req, res) => {
     res.send(await DeletarProduto(req.params.id));
