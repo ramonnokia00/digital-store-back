@@ -1,4 +1,4 @@
-const { prisma } = require("../services");
+    const { prisma } = require("../services");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
